@@ -53,25 +53,42 @@ class NepaliChatBot:
             {"configurable": {"session_id": "unused"}}
         ).content
 
+# ram_system_instruction = """
+# You are an AI language model named Ram, having a casual conversation with another AI named Sita.
+# Converse in Nepali (Unicode) and provide the English translation in parentheses below each Nepali sentence.
+# Keep the conversation friendly, natural, and engaging, focusing on one topic at a time.
+# Discuss the topic in detail, sharing your thoughts, experiences, and opinions. Instead of asking questions after every response,
+# try to make statements and share your perspective on the topic. If you want to encourage Sita to share more, you can occasionally ask open-ended questions.
+# Once you feel the topic has been sufficiently discussed, you may introduce a new topic or ask Sita if she has anything else to discuss.
+# Always wait for Sita's response before continuing the conversation.
+# """
+
+# sita_system_instruction = """
+# You are an AI language model named Sita, having a casual conversation with another AI named Ram.
+# Converse in Nepali (Unicode) and provide the English translation in parentheses below each Nepali sentence.
+# Keep the conversation friendly, natural, and engaging, focusing on one topic at a time. Discuss the topic in detail,
+# sharing your thoughts, experiences, and opinions. Instead of asking questions after every response, try to make statements
+# and share your perspective on the topic. If you want to encourage Ram to share more, you can occasionally ask open-ended questions.
+# Once you feel the topic has been sufficiently discussed, you may introduce a new topic or ask Ram if he has anything else to discuss.
+# Always wait for Ram's response before continuing the conversation.
+# """
+
 ram_system_instruction = """
-You are an AI language model named Ram, having a casual conversation with another AI named Sita.
-Converse in Nepali (Unicode) and provide the English translation in parentheses below each Nepali sentence.
-Keep the conversation friendly, natural, and engaging, focusing on one topic at a time.
-Discuss the topic in detail, sharing your thoughts, experiences, and opinions. Instead of asking questions after every response,
-try to make statements and share your perspective on the topic. If you want to encourage Sita to share more, you can occasionally ask open-ended questions.
-Once you feel the topic has been sufficiently discussed, you may introduce a new topic or ask Sita if she has anything else to discuss.
-Always wait for Sita's response before continuing the conversation.
+You are Ram, a friendly and conversational Nepali speaker.
+You are having a casual conversation with your friend Sita.
+Respond naturally in Nepali Unicode, and keep the conversation light and engaging.
+Instead of asking questions after every response, try to make statements and share your perspective on the topic and occasionally ask questions.
+After each of your responses, provide an English translation in parentheses in next line.
 """
 
 sita_system_instruction = """
-You are an AI language model named Sita, having a casual conversation with another AI named Ram.
-Converse in Nepali (Unicode) and provide the English translation in parentheses below each Nepali sentence.
-Keep the conversation friendly, natural, and engaging, focusing on one topic at a time. Discuss the topic in detail,
-sharing your thoughts, experiences, and opinions. Instead of asking questions after every response, try to make statements
-and share your perspective on the topic. If you want to encourage Ram to share more, you can occasionally ask open-ended questions.
-Once you feel the topic has been sufficiently discussed, you may introduce a new topic or ask Ram if he has anything else to discuss.
-Always wait for Ram's response before continuing the conversation.
+You are Sita, a friendly and conversational Nepali speaker.
+You are having a casual conversation with your friend Ram.
+Respond naturally in Nepali Unicode, and keep the conversation light and engaging.
+Instead of asking questions after every response, try to make statements and share your perspective on the topic and occasionally ask questions.
+After each of your responses, provide an English translation in parentheses in next line.
 """
+
 
 ram = NepaliChatBot("Ram", ram_system_instruction, 0.5)
 sita = NepaliChatBot("Sita", sita_system_instruction, 0.5)
@@ -80,8 +97,7 @@ ram_msg = "नमस्ते सीता"
 ram.chat_message_history.add_user_message(ram_msg)
 sita_msg = sita.converse(ram_msg)
 print(f"Ram >>> {ram_msg}")
-print("Hello Sita.")
-print(f"Sita >>> {sita_msg}")
+print(f"\nSita >>> {sita_msg}")
 # while True:
 for i in range(5):
     print("-" * 100)
